@@ -6,6 +6,9 @@ bl_info = {
     "blender": (4, 3, 0),
     "location": "Dope Sheet > Header Menu",
     "category": "Animation",
+    "support": "COMMUNITY"
+    "doc_url": "https://bitey.com"
+    "tracker_url": "https://github.com/35743/GreasePencil/issues"
 }
 
 import bpy
