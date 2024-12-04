@@ -17,8 +17,9 @@ A couple of buttons and a timecode readout on the Dope Sheet's Grease Pencil too
 - **Time**: timecode in seconds and frames
 
 # Installation
-In the directory above, click the `gp_ap_timeline_tools` folder, go and download the `.zip` inside.
-In Blender, go to *Edit > Preferences > Add-ons* tab
+1. Click the big green **<>CODE** button above, and choose *Download ZIP*.
+2. Save and Extract the .zip somewhere on your local drive.
+3. In Blender, go to *Edit > Preferences > Add-ons* tab
 - Top-right dropdown arrow icon (Add-ons Settings), choose > *Install from disk..*
-- Browse to where you saved the above `.zip`
-- Click Install and done!
+- Browse to where you saved the above `.zip` and wriggle into: *GreasePencil-main > gp_ap_timeline_tools >* `gp_ap_timeline_blanks_<version>.zip`
+- Click Install and you're done!
