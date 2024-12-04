@@ -1,2 +1,17 @@
 # GreasePencil
 A collection of Grease Pencil scripts 
+
+## GP Keyframe Tools
+This script adds a couple of little tools for Grease Pencil animators
+### N-panel
+In the 3Dview's N-panel under the Grease Pencil tab, you'll find a panel called Grease Pencil Keyframes.
+- Keyframe Count: add blank keyframes to the selected Grease Pencil layer
+- Spacing: specify how far apart your keyframes will be spaced
+- Start from Playhead: Position the playhead where you want your new blank keyframes to start from. Otherwise, blank keyframes will initially be added at frame 1, or appended to the end of the current sequence of keyframes.
+- Add Keyframes button. Once you've entered the things, hit this button.
+
+### GP Timeline Toolbar
+A couple of buttons and a timecode readout on the Dope Sheet's Grease Pencil toolbar:
+- +5: this button adds 5 blanks on twos.
+- +10: this button adds 10 blanks on ones.
+- Time: timecode in seconds and frames
