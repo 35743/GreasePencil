@@ -15,3 +15,10 @@ A couple of buttons and a timecode readout on the Dope Sheet's Grease Pencil too
 - +5: this button adds 5 blanks on twos.
 - +10: this button adds 10 blanks on ones.
 - Time: timecode in seconds and frames
+
+# Installation
+Click the gp_ap_timeline_tools folder and download the .zip inside.
+In Blender, go to Edit > Preferences > Add-ons tab
+- Top-right dropdown arrow icon (Add-ons Settings), choose > Install from disk..
+- Browse to where you saved the above .zip
+- Click Install and done!
