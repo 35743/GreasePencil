@@ -2,6 +2,7 @@
 A couple of Grease Pencil scripts 
 
 ## GP Keyframe Tools
+**Compatibility**: Blender 4.3+
 This script adds a couple of little tools for Grease Pencil animators
 ### N-panel
 In the 3Dview's N-panel under the Grease Pencil tab, you'll find a panel called Grease Pencil Keyframes.
