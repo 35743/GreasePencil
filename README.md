@@ -31,3 +31,6 @@ A couple of buttons and a timecode readout on the Dope Sheet's Grease Pencil too
 - Top-right dropdown arrow icon (Add-ons Settings), choose > *Install from disk..*
 - Browse to where you saved the above `.zip` and wriggle into: *GreasePencil-main > gp_ap_timeline_tools >* `gp_ap_timeline_blanks_<version>.zip`
 - Click Install and you're done!
+
+# Legacy Version Available
+Click HERE for one that works with older Blender (tested on 3.6.16).
