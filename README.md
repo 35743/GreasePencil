@@ -2,7 +2,7 @@
 Timeline and Keyframe utilities for Grease Pencil animators
 - **Compatibility**: Blender 4.3+
 - For **legacy version** (Blender 3.6.16) [CLICK HERE](https://github.com/35743/GreasePencil-Legacy)
-
+## Features
 ### N-panel
 In the 3Dview's N-panel under the Grease Pencil tab, you'll find a panel called Grease Pencil Keyframes.
 - **Keyframe Count**: add blank keyframes to the selected Grease Pencil layer
@@ -27,4 +27,3 @@ A couple of buttons and a timecode readout on the Dope Sheet's Grease Pencil too
 - Top-right dropdown arrow icon (Add-ons Settings), choose > *Install from disk..*
 - Browse to where you saved the above `.zip`
 - Click Install and you're done!
-
