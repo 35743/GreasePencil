@@ -2,8 +2,8 @@ bl_info = {
     "name": "AP Keyframe Tools",
     "description": "Adds tools to append blank keyframes and displays playhead position in seconds and frames.",
     "author": "Phillips aka chluaid",
-    "version": (1, 6, 0),
-    "blender": (4, 3, 0),
+    "version": (0, 1, 0),
+    "blender": (3, 0, 0),
     "location": "Dope Sheet > Header Menu, 3D View > N-panel",
     "category": "Animation",
     "support": "COMMUNITY",
@@ -15,13 +15,13 @@ bl_info = {
 
 import bpy
 
-# core function to add keyframes
+# Core function to add keyframes
 def add_keyframes(context, frame_count, spacing, start_from_playhead=False):
     """Core function to add blank keyframes with specified spacing."""
     gp_obj = context.active_object
 
-    # Ensure selected is GP
-    if gp_obj and gp_obj.type == 'GREASEPENCIL':
+    # Verify selected is a GP object
+    if gp_obj and gp_obj.type == 'GPENCIL':  # This is hte legacy GP type
         gp_layer = gp_obj.data.layers.active
         if gp_layer:
             # Determine starting frame
@@ -31,11 +31,11 @@ def add_keyframes(context, frame_count, spacing, start_from_playhead=False):
                 existing_frames = [frame.frame_number for frame in gp_layer.frames]
                 start_frame = max(existing_frames) if existing_frames else 1 - spacing
 
-            # Frames to insert blank keys
+            # Frames where to insert blanks
             frames = [start_frame + i * spacing for i in range(frame_count)]
             for frame_num in frames:
                 context.scene.frame_current = frame_num
-                bpy.ops.grease_pencil.insert_blank_frame()
+                bpy.ops.gpencil.frame_add(type='EMPTY')  # Legacy operator for blank frames
             return f"Blank keyframes added at frames: {frames}"
         else:
             return "No active Grease Pencil layer selected."
@@ -43,9 +43,9 @@ def add_keyframes(context, frame_count, spacing, start_from_playhead=False):
         return "The active object is not a Grease Pencil object."
 
 
-# Operator for +5 Frames
+# Operator for +5 frames
 class GP_OT_AddKeyframes5(bpy.types.Operator):
-    bl_idname = "grease_pencil.add_5_keyframes"
+    bl_idname = "gpencil.add_5_keyframes"
     bl_label = "Add +5 Frames"
     bl_description = "Adds 5 blank keyframes spaced by 2 frames."
 
@@ -55,9 +55,9 @@ class GP_OT_AddKeyframes5(bpy.types.Operator):
         return {'FINISHED'}
 
 
-# Operator for +10 Frames
+# Operator for +10 frames
 class GP_OT_AddKeyframes10(bpy.types.Operator):
-    bl_idname = "grease_pencil.add_10_keyframes"
+    bl_idname = "gpencil.add_10_keyframes"
     bl_label = "Add +10 Frames"
     bl_description = "Adds 10 blank keyframes spaced by 1 frame."
 
@@ -67,9 +67,9 @@ class GP_OT_AddKeyframes10(bpy.types.Operator):
         return {'FINISHED'}
 
 
-# Operator for N-panel with Custom Input
+# Operator for N-panel with user inputs
 class GP_OT_AddKeyframesCustom(bpy.types.Operator):
-    bl_idname = "grease_pencil.add_keyframes_custom"
+    bl_idname = "gpencil.add_keyframes_custom"
     bl_label = "Add Keyframes"
     bl_description = "Adds blank keyframes based on the number and spacing defined."
 
@@ -82,14 +82,14 @@ class GP_OT_AddKeyframesCustom(bpy.types.Operator):
         return {'FINISHED'}
 
 
-# Timeline toolbar with buttons and readout
+# timeline toolbar with buttons and readout
 def draw_menu(self, context):
     layout = self.layout
     scene = context.scene
 
     # Add the +5 and +10 buttons
-    layout.operator("grease_pencil.add_5_keyframes", text="+5")
-    layout.operator("grease_pencil.add_10_keyframes", text="+10")
+    layout.operator("gpencil.add_5_keyframes", text="+5")
+    layout.operator("gpencil.add_10_keyframes", text="+10")
 
     # Display the playhead position as seconds and frames
     frame_rate = scene.render.fps
@@ -118,10 +118,10 @@ class GP_PT_KeyframePanel(bpy.types.Panel):
         layout.prop(scene, "gp_start_from_playhead", text="Start from Playhead")
 
         # Add keyframes button
-        layout.operator("grease_pencil.add_keyframes_custom", text="Add Keyframes")
+        layout.operator("gpencil.add_keyframes_custom", text="Add Keyframes")
 
 
-# Register
+# Register bits
 def register():
     bpy.types.Scene.gp_frame_count = bpy.props.IntProperty(
         name="Keyframe Count",
