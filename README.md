@@ -22,7 +22,7 @@ A couple of buttons and a timecode readout on the Dope Sheet's Grease Pencil too
 
 # Installation
 1. Click the big green **<>CODE** button above, and choose *Download ZIP*.
-2. Save and Extract the .zip somewhere on your local drive.
+2. Save the .zip somewhere on your local drive. No need to extract it.
 3. In Blender, go to *Edit > Preferences > Add-ons* tab
 - Top-right dropdown arrow icon (Add-ons Settings), choose > *Install from disk..*
 - Browse to where you saved the above `.zip`
