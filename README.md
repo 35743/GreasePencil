@@ -3,6 +3,7 @@ A couple of Grease Pencil scripts
 
 ## GP Keyframe Tools
 **Compatibility**: Blender 4.3+
+For legacy version (Blender 3.6.16) [CLICK HERE](https://github.com/35743/GreasePencil-Legacy)
 
 Timeline and Keyframe utilities for Grease Pencil animators
 
@@ -32,5 +33,3 @@ A couple of buttons and a timecode readout on the Dope Sheet's Grease Pencil too
 - Browse to where you saved the above `.zip` and wriggle into: *GreasePencil-main > gp_ap_timeline_tools >* `gp_ap_timeline_blanks_<version>.zip`
 - Click Install and you're done!
 
-# Legacy Version Available
-Click HERE for one that works with older Blender (tested on 3.6.16).
