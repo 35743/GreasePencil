@@ -11,7 +11,8 @@ In the 3Dview's N-panel under the Grease Pencil tab, you'll find a panel called 
 - **Add Keyframes** button. Once you've entered the things, ***be sure to select the layer you want the keyframes added to***, then hit this button.
 - **Toggle Onionskin** button. This toggles onionskin of the selected layer on, and all others off.
 
-![image](https://github.com/user-attachments/assets/05bb86f7-760b-4721-8af3-bf6005f384d8)
+![image](https://github.com/user-attachments/assets/82503406-654b-48d4-b6cb-0af9af1914a5)
+
  
 ### GP Timeline Toolbar
 A couple of buttons and a timecode readout on the Dope Sheet's Grease Pencil toolbar:
@@ -20,7 +21,7 @@ A couple of buttons and a timecode readout on the Dope Sheet's Grease Pencil too
 - **Time**: timecode in seconds and frames
 - **OnSkn**: toggle selected layer's onionskin on, all others off.
 
-![image](https://github.com/user-attachments/assets/c4ec29ac-5feb-4daf-8a5f-5aac55397ff5)
+![image](https://github.com/user-attachments/assets/966ce701-bd5d-49df-bbe5-03ab01f3c543)
 
 # Installation
 1. Click the big green **<>CODE** button above, and choose *Download ZIP*.
