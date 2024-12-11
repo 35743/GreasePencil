@@ -71,7 +71,7 @@ class GP_OT_AddKeyframes10(bpy.types.Operator):
 class GP_OT_AddKeyframesCustom(bpy.types.Operator):
     bl_idname = "grease_pencil.add_keyframes_custom"
     bl_label = "Add Keyframes"
-    bl_description = "Adds blank keyframes based on the number and spacing defined."
+    bl_description = "Add blank keyframe with spacing."
 
     def execute(self, context):
         frame_count = context.scene.gp_frame_count
@@ -86,10 +86,10 @@ class GP_OT_AddKeyframesCustom(bpy.types.Operator):
 class GP_OT_ToggleOnionSkin(bpy.types.Operator):
     """Toggle Onion Skin for Active Layer"""
     bl_idname = "grease_pencil.toggle_onion_skin"
-    bl_label = "Toggle Onion Skin"
+    bl_label = "Toggle OnSkn"
     bl_description = (
-        "Toggle onion skin for the active Grease Pencil layer "
-        "while disabling it for all other layers"
+        "Toggle onionskin for active GP layer "
+        "disabling it for all other layers"
     )
 
     def execute(self, context):
