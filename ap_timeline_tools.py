@@ -132,8 +132,6 @@ def draw_menu(self, context):
     layout.operator("grease_pencil.add_5_keyframes", text="+5")
     layout.operator("grease_pencil.add_10_keyframes", text="+10")
 
-    # Add Toggle Onion Skin button
-    layout.operator("grease_pencil.toggle_onion_skin", text="Toggle Onion Skin")
 
     # Display the playhead position as seconds and frames
     frame_rate = scene.render.fps
@@ -143,6 +141,8 @@ def draw_menu(self, context):
 
     layout.label(text=f"Time: {seconds:02}:{remaining_frames:02}")
 
+    # Add Toggle Onion Skin button
+    layout.operator("grease_pencil.toggle_onion_skin", text="OnSkn")
 
 # N-panel for 3D View
 class GP_PT_KeyframePanel(bpy.types.Panel):
