@@ -1,9 +1,9 @@
 bl_info = {
-    "name": "AP Keyframe Tools",
-    "description": "Adds tools to append blank keyframes and displays playhead position in seconds and frames.",
+    "name": "AP Timeline Tools",
+    "description": "Append blank keyframes, ss:ff timecode, onionskin toggle.",
     "author": "Phillips aka chluaid",
-    "version": (1, 6, 0),
-    "blender": (4, 3, 0),
+    "version": (1, 7, 0),
+    "blender": (4, 3, 1),
     "location": "Dope Sheet > Header Menu, 3D View > N-panel",
     "category": "Animation",
     "support": "COMMUNITY",
@@ -15,12 +15,12 @@ bl_info = {
 
 import bpy
 
-# core function to add keyframes
+# Core function to add keyframes
 def add_keyframes(context, frame_count, spacing, start_from_playhead=False):
     """Core function to add blank keyframes with specified spacing."""
     gp_obj = context.active_object
 
-    # Ensure selected is GP
+    # Ensure selected object is GP
     if gp_obj and gp_obj.type == 'GREASEPENCIL':
         gp_layer = gp_obj.data.layers.active
         if gp_layer:
@@ -65,8 +65,8 @@ class GP_OT_AddKeyframes10(bpy.types.Operator):
         message = add_keyframes(context, frame_count=10, spacing=1)
         self.report({'INFO'}, message)
         return {'FINISHED'}
-
-
+        
+        
 # Operator for N-panel with Custom Input
 class GP_OT_AddKeyframesCustom(bpy.types.Operator):
     bl_idname = "grease_pencil.add_keyframes_custom"
@@ -82,6 +82,47 @@ class GP_OT_AddKeyframesCustom(bpy.types.Operator):
         return {'FINISHED'}
 
 
+# Operator to Toggle Onion Skin
+class GP_OT_ToggleOnionSkin(bpy.types.Operator):
+    """Toggle Onion Skin for Active Layer"""
+    bl_idname = "grease_pencil.toggle_onion_skin"
+    bl_label = "Toggle Onion Skin"
+    bl_description = (
+        "Toggle onion skin for the active Grease Pencil layer "
+        "while disabling it for all other layers"
+    )
+
+    def execute(self, context):
+        gp_obj = context.active_object
+
+        # Ensure selected object is GP
+        if gp_obj and gp_obj.type == 'GREASEPENCIL':
+            layers = gp_obj.data.layers
+            active_layer = layers.active
+
+            if active_layer:
+                # If onion skin is off for all layers, turn it on for the active layer
+                if not any(layer.use_onion_skinning for layer in layers):
+                    active_layer.use_onion_skinning = True
+                else:
+                    # Toggle active layer onion skin and disable others
+                    active_layer.use_onion_skinning = not active_layer.use_onion_skinning
+                    for layer in layers:
+                        if layer != active_layer:
+                            layer.use_onion_skinning = False
+
+                self.report(
+                    {'INFO'},
+                    f"Onion skin {'enabled' if active_layer.use_onion_skinning else 'disabled'} for '{active_layer.name}'"
+                )
+            else:
+                self.report({'WARNING'}, "No active Grease Pencil layer selected.")
+        else:
+            self.report({'WARNING'}, "The active object is not a Grease Pencil object.")
+
+        return {'FINISHED'}
+
+
 # Timeline toolbar with buttons and readout
 def draw_menu(self, context):
     layout = self.layout
@@ -90,6 +131,9 @@ def draw_menu(self, context):
     # Add the +5 and +10 buttons
     layout.operator("grease_pencil.add_5_keyframes", text="+5")
     layout.operator("grease_pencil.add_10_keyframes", text="+10")
+
+    # Add Toggle Onion Skin button
+    layout.operator("grease_pencil.toggle_onion_skin", text="Toggle Onion Skin")
 
     # Display the playhead position as seconds and frames
     frame_rate = scene.render.fps
@@ -100,7 +144,7 @@ def draw_menu(self, context):
     layout.label(text=f"Time: {seconds:02}:{remaining_frames:02}")
 
 
-# N-panel for 3d view
+# N-panel for 3D View
 class GP_PT_KeyframePanel(bpy.types.Panel):
     bl_label = "Grease Pencil Keyframes"
     bl_idname = "VIEW3D_PT_gp_keyframe_panel"
@@ -119,6 +163,10 @@ class GP_PT_KeyframePanel(bpy.types.Panel):
 
         # Add keyframes button
         layout.operator("grease_pencil.add_keyframes_custom", text="Add Keyframes")
+
+        # Add Toggle Onion Skin button
+        layout.separator()
+        layout.operator("grease_pencil.toggle_onion_skin", text="Toggle Onion Skin")
 
 
 # Register
@@ -144,6 +192,7 @@ def register():
     bpy.utils.register_class(GP_OT_AddKeyframes5)
     bpy.utils.register_class(GP_OT_AddKeyframes10)
     bpy.utils.register_class(GP_OT_AddKeyframesCustom)
+    bpy.utils.register_class(GP_OT_ToggleOnionSkin)
     bpy.utils.register_class(GP_PT_KeyframePanel)
     bpy.types.DOPESHEET_MT_editor_menus.append(draw_menu)
 
@@ -151,6 +200,7 @@ def register():
 def unregister():
     bpy.types.DOPESHEET_MT_editor_menus.remove(draw_menu)
     bpy.utils.unregister_class(GP_PT_KeyframePanel)
+    bpy.utils.unregister_class(GP_OT_ToggleOnionSkin)
     bpy.utils.unregister_class(GP_OT_AddKeyframesCustom)
     bpy.utils.unregister_class(GP_OT_AddKeyframes10)
     bpy.utils.unregister_class(GP_OT_AddKeyframes5)

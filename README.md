@@ -1,7 +1,4 @@
-# GreasePencil
-A couple of Grease Pencil scripts 
-
-## GP Keyframe Tools
+# AP Timeline Tools
 Timeline and Keyframe utilities for Grease Pencil animators
 
 - **Compatibility**: Blender 4.3+
@@ -15,6 +12,7 @@ In the 3Dview's N-panel under the Grease Pencil tab, you'll find a panel called 
 - **Spacing**: specify how far apart your keyframes will be spaced
 - **Start from Playhead**: Position the playhead where you want your new blank keyframes to start from. Otherwise, blank keyframes will initially be added at frame 1, or appended to the end of the current sequence of keyframes.
 - **Add Keyframes** button. Once you've entered the things, ***be sure to select the layer you want the keyframes added to***, then hit this button.
+- **Toggle Onionskin** button. This toggles onionskin of the selected layer on, and all others off.
 
 ![image](https://github.com/user-attachments/assets/05bb86f7-760b-4721-8af3-bf6005f384d8)
  
@@ -23,6 +21,7 @@ A couple of buttons and a timecode readout on the Dope Sheet's Grease Pencil too
 - **+5**: this button adds 5 blanks on twos ***to the selected GP layer***
 - **+10**: this button adds 10 blanks on ones ***to the selected GP layer***
 - **Time**: timecode in seconds and frames
+- **OnSkn**: toggle selected layer's onionskin on, all others off.
 
 ![image](https://github.com/user-attachments/assets/c4ec29ac-5feb-4daf-8a5f-5aac55397ff5)
 
@@ -31,6 +30,6 @@ A couple of buttons and a timecode readout on the Dope Sheet's Grease Pencil too
 2. Save and Extract the .zip somewhere on your local drive.
 3. In Blender, go to *Edit > Preferences > Add-ons* tab
 - Top-right dropdown arrow icon (Add-ons Settings), choose > *Install from disk..*
-- Browse to where you saved the above `.zip` and wriggle into: *GreasePencil-main > gp_ap_timeline_tools >* `gp_ap_timeline_blanks_<version>.zip`
+- Browse to where you saved the above `.zip`
 - Click Install and you're done!
 
