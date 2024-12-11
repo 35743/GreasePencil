@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-# AP Timeline Tools
-=======
 # GreasePencil Keyframes
->>>>>>> 1a8966dc7fa03aced8783066c42a92b422a2a50e
 Timeline and Keyframe utilities for Grease Pencil animators
 - **Compatibility**: Blender 4.3+
 - For **legacy version** (Blender 3.6.16) [CLICK HERE](https://github.com/35743/GreasePencil-Legacy)
